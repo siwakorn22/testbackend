@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 08:09 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Mar 14, 2023 at 03:10 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,9 +49,9 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`patient_id`, `id_card`, `fistname`, `lastname`, `password`, `birthday`, `age`, `weight`, `height`, `nationality`, `religion`, `contact_person`, `history_drug_allergy`, `phone_number`) VALUES
-(1, '1729800000078', 'ณรงค์ฤทธิ์', 'สุปรานนท์', '', '0000-00-00', 22, 65, 178, '178', 'พุทธ', 'ศิวกร', 'ไม่มี', 989999999),
-(2, '1729800000078', 'เอิทททท', 'สุปรานนท์', '', '0000-00-00', 22, 65, 178, '178', 'พุทธ', 'ศิวกร', 'ไม่มี', 989999999),
-(3, '1729800000005', 'นันทชัย', '5555', '', '0000-00-00', 22, 65, 178, 'ไทย', 'พุทธ', 'ศิวกร', 'ไม่มี', 7777779);
+(1, '1729800000099', 'ณรงค์ฤทธิ์', 'สุปรานนท์', '', '0000-00-00', 22, 65, 178, '178', 'พุทธ', 'ศิวกร', 'ไม่มี', 989999999),
+(2, '1729800000099', 'นันทชัย', 'แสงอรุณ', '', '0000-00-00', 22, 65, 178, '178', 'พุทธ', 'ศิวกร', 'ไม่มี', 989999999),
+(3, '1729800000002', 'นันทชัย', 'แสงอรุณ', '', '0000-00-00', 22, 65, 178, 'ไทย', 'พุทธ', 'ศิวกร', 'ไม่มี', 989999999);
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,10 @@ CREATE TABLE `tbl_department` (
 --
 
 INSERT INTO `tbl_department` (`department_id`, `department_name`, `department_image`, `close_time`, `max_queue_number`, `floor`, `building`) VALUES
-(1, 'ทันตกรรม', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthaksinhospital.com%2Fthaksin%2Fdepartment_detail.php%3Fmenu%3D1%26id%3D2&psig=AOvVaw1gFo2WwZqOoJPLDIq5BJDl&ust=1678686478156000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCLCmtc3Y1f0CFQAAAAAdAAAAABAD', '16.00', '200', '3', '3');
+(1, 'ทันตกรรม', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthaksinhospital.com%2Fthaksin%2Fdepartment_detail.php%3Fmenu%3D1%26id%3D2&psig=AOvVaw1gFo2WwZqOoJPLDIq5BJDl&ust=1678686478156000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCLCmtc3Y1f0CFQAAAAAdAAAAABAD', '16.00', '200', '3', '3'),
+(2, 'ทันตกรรม', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthaksinhospital.com%2Fthaksin%2Fdepartment_detail.php%3Fmenu%3D1%26id%3D2&psig=AOvVaw1gFo2WwZqOoJPLDIq5BJDl&ust=1678686478156000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCLCmtc3Y1f0CFQAAAAAdAAAAABAD', '16.00', '200', '3', '3'),
+(3, 'แผนกสูติ-นรีเวช', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthaksinhospital.com%2Fthaksin%2Fdepartment_detail.php%3Fmenu%3D1%26id%3D2&psig=AOvVaw1gFo2WwZqOoJPLDIq5BJDl&ust=1678686478156000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCLCmtc3Y1f0CFQAAAAAdAAAAABAD', '16.00', '200', '3', '3'),
+(4, 'ทันตกรรม', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fthaksinhospital.com%2Fthaksin%2Fdepartment_detail.php%3Fmenu%3D1%26id%3D2&psig=AOvVaw1gFo2WwZqOoJPLDIq5BJDl&ust=1678686478156000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCLCmtc3Y1f0CFQAAAAAdAAAAABAD', '16.00', '200', '3', '3');
 
 -- --------------------------------------------------------
 
@@ -124,10 +127,10 @@ INSERT INTO `tbl_department` (`department_id`, `department_name`, `department_im
 --
 
 CREATE TABLE `tbl_doctor` (
-  `doctor_id` int(20) NOT NULL,
+  `doctor_id` varchar(20) NOT NULL,
   `doctor_name` varchar(50) NOT NULL,
   `docter_phonenumber` int(10) NOT NULL,
-  `department_id` int(200) NOT NULL
+  `department_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -135,7 +138,7 @@ CREATE TABLE `tbl_doctor` (
 --
 
 INSERT INTO `tbl_doctor` (`doctor_id`, `doctor_name`, `docter_phonenumber`, `department_id`) VALUES
-(1, 'นันทชัย', 888888888, 1);
+('1', 'นันทชัย', 888888888, '1');
 
 -- --------------------------------------------------------
 
@@ -260,8 +263,7 @@ ALTER TABLE `patient`
 -- Indexes for table `tbl_authorities`
 --
 ALTER TABLE `tbl_authorities`
-  ADD PRIMARY KEY (`authorities_id`),
-  ADD KEY `department_id` (`department_id`);
+  ADD PRIMARY KEY (`authorities_id`);
 
 --
 -- Indexes for table `tbl_congenital_disease`
@@ -274,13 +276,6 @@ ALTER TABLE `tbl_congenital_disease`
 --
 ALTER TABLE `tbl_department`
   ADD PRIMARY KEY (`department_id`);
-
---
--- Indexes for table `tbl_doctor`
---
-ALTER TABLE `tbl_doctor`
-  ADD PRIMARY KEY (`doctor_id`),
-  ADD KEY `department_id` (`department_id`);
 
 --
 -- Indexes for table `tbl_have_patient`
@@ -298,11 +293,7 @@ ALTER TABLE `tbl_questionaire`
 -- Indexes for table `tbl_queue`
 --
 ALTER TABLE `tbl_queue`
-  ADD PRIMARY KEY (`queue_id`),
-  ADD KEY `questionnaire_id` (`questionnaire_id`),
-  ADD KEY `department_id` (`department_id`),
-  ADD KEY `queue_status_id` (`queue_status_id`),
-  ADD KEY `authorities_id` (`authorities_id`);
+  ADD PRIMARY KEY (`queue_id`);
 
 --
 -- Indexes for table `tbl_queue_status`
@@ -318,7 +309,7 @@ ALTER TABLE `tbl_queue_status`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patient_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `patient_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_authorities`
@@ -336,7 +327,7 @@ ALTER TABLE `tbl_congenital_disease`
 -- AUTO_INCREMENT for table `tbl_department`
 --
 ALTER TABLE `tbl_department`
-  MODIFY `department_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `department_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_questionaire`
@@ -355,31 +346,6 @@ ALTER TABLE `tbl_queue`
 --
 ALTER TABLE `tbl_queue_status`
   MODIFY `queue_status_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbl_authorities`
---
-ALTER TABLE `tbl_authorities`
-  ADD CONSTRAINT `tbl_authorities_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tbl_department` (`department_id`);
-
---
--- Constraints for table `tbl_doctor`
---
-ALTER TABLE `tbl_doctor`
-  ADD CONSTRAINT `tbl_doctor_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tbl_department` (`department_id`);
-
---
--- Constraints for table `tbl_queue`
---
-ALTER TABLE `tbl_queue`
-  ADD CONSTRAINT `tbl_queue_ibfk_1` FOREIGN KEY (`questionnaire_id`) REFERENCES `tbl_questionaire` (`questionaire_id`),
-  ADD CONSTRAINT `tbl_queue_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `tbl_department` (`department_id`),
-  ADD CONSTRAINT `tbl_queue_ibfk_3` FOREIGN KEY (`queue_status_id`) REFERENCES `tbl_queue_status` (`queue_status_id`),
-  ADD CONSTRAINT `tbl_queue_ibfk_4` FOREIGN KEY (`authorities_id`) REFERENCES `tbl_authorities` (`authorities_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

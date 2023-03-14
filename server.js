@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const patientRouter = require("./routes/patient.router");
 const departmentsRouter = require("./routes/Departmen.route");
+const doctorRouter = require("./routes/Doctor.router");
 // Create Server
 const app = express();
 
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
 app.use("/apis", patientRouter);
 
 app.use("/apis", departmentsRouter);
+
+app.use("/apis", doctorRouter);
 
 // Running server
 app.listen(5000, () => {
