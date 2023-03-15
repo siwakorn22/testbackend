@@ -55,7 +55,7 @@ router.get("/patients/:id", (req, res) => {
 //Get all patient
 //http://localhost:5000/apis/patients
 router.get("/patients", (req, res) => {
-  Patient.getAll((err, data) => {
+  Patient.getall((err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || "Some error while retrieving patients",
@@ -109,6 +109,17 @@ router.delete("/patients/:id", (req, res) => {
       }
     } else {
       res.send({ message: "Patient is deleted successfully" });
+    }
+  });
+});
+router.get("/patient", (req, res) => {
+  Patient.getbypatient((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || "Some error while retrieving patients",
+      });
+    } else {
+      res.send(data);
     }
   });
 });

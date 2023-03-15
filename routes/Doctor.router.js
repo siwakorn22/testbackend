@@ -43,8 +43,8 @@ Dorouter.get("/doctors/:id", (req, res) => {
   });
 });
 
-//Get all departments
-//http://localhost:5000/apis/departments
+//Get all doctors
+//http://localhost:5000/apis/doctors
 Dorouter.get("/doctors", (req, res) => {
   Doctors.getAll((err, data) => {
     if (err) {

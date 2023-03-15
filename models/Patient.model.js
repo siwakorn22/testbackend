@@ -53,7 +53,7 @@ Patient.getById = async (patientId, result) => {
   );
 };
 //Get all ให้แอดมินเรียกใช้ใน การจัดการ user
-Patient.getAll = async (result) => {
+Patient.getall = async (result) => {
   //SELECT * FROM patient
   await sql.query("SELECT * FROM patient", (err, res) => {
     if (err) {
@@ -120,6 +120,17 @@ Patient.removeById = async (patient_id, result) => {
       result(null, res);
     }
   );
+};
+Patient.getbypatient = async (result) => {
+  //SELECT * FROM patient
+  await sql.query("SELECT id_card,fistname,lastname FROM patient  ", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, res);
+  });
 };
 Patient.removeAll = () => {};
 
