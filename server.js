@@ -5,6 +5,7 @@ const departmentsRouter = require("./routes/Departmen.route");
 const doctorRouter = require("./routes/Doctor.router");
 const questionaireRouter = require("./routes/Questionaire.router")
 const authoritiesRouter = require("./routes/Authorities.route")
+const queuestatusRouter = require("./routes/Queuestatus.router")
 // Create Server
 const app = express();
 
@@ -27,6 +28,8 @@ app.use("/apis", doctorRouter);
 app.use("/apis",questionaireRouter);
 
 app.use("/apis",authoritiesRouter)
+
+app.use("/apis", queuestatusRouter);
 
 // Running server
 app.listen(5000, () => {
